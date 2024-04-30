@@ -1,3 +1,7 @@
+# 6
+
+1. typewriter.tsx added
+
 # 5
 
 1. new repository created

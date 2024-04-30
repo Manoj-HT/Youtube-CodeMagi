@@ -2,7 +2,7 @@ import {CSSProperties} from 'react';
 import {Easing, interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 
 const BackgroundCircle = () => {
-	// styles =============================================>
+	// Styles =============================================>
 	const defaults = {
 		mainContainerSize: 1800,
 		tubeColor: 'transparent',
@@ -42,7 +42,7 @@ const BackgroundCircle = () => {
 		progressBarContainer: {
 			position: 'absolute',
 			top: 0,
-			// border: '5px solid blue',
+			// Border: '5px solid blue',
 			left: `${converted.quarterSize * -1}px`,
 			width: `${converted.halfSize}px`,
 			height: `${converted.halfSize}px`,
@@ -68,15 +68,15 @@ const BackgroundCircle = () => {
 			zIndex: 3,
 		},
 	};
-	//JS =============================================>
+	// JS =============================================>
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
 	const getInterpolate = (order: boolean) => {
-		let totalFramesToAdd = (fps * defaults.time) / 2,
-			primary = totalFramesToAdd,
-			secondary = primary + totalFramesToAdd,
-			fromToFrame,
-			easing;
+		const totalFramesToAdd = (fps * defaults.time) / 2;
+		const primary = totalFramesToAdd;
+		const secondary = primary + totalFramesToAdd;
+		let fromToFrame;
+		let easing;
 		if (order) {
 			fromToFrame = [0, primary];
 			easing = Easing.in(Easing.ease);
@@ -100,10 +100,10 @@ const BackgroundCircle = () => {
 							transform: `rotate(${getInterpolate(true)}deg)`,
 						}}
 					>
-						<div style={styles.progressBar}></div>
+						<div style={styles.progressBar} />
 					</div>
 				</div>
-				<div style={styles.progressOverlay}></div>
+				<div style={styles.progressOverlay} />
 				<div style={{...styles.progressTube, ...styles.right}}>
 					<div
 						style={{
@@ -111,7 +111,7 @@ const BackgroundCircle = () => {
 							transform: `rotate(${getInterpolate(false) * -1}deg)`,
 						}}
 					>
-						<div style={styles.progressBar}></div>
+						<div style={styles.progressBar} />
 					</div>
 				</div>
 			</div>

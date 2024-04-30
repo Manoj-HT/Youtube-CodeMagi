@@ -6,7 +6,7 @@ import {
 	InterpolateOptions,
 } from 'remotion';
 const ForeDrop = () => {
-	// styles =============================================>
+	// Styles =============================================>
 	const styles: {[key: string]: CSSProperties} = {
 		mainContainer: {
 			height: '900px',
@@ -21,7 +21,7 @@ const ForeDrop = () => {
 			border: '60px solid white',
 		},
 	};
-	//JS =============================================>
+	// JS =============================================>
 	const interpolateOptions: InterpolateOptions = {
 		easing: Easing.in(Easing.ease),
 		extrapolateLeft: 'clamp',

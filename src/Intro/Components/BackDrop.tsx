@@ -2,7 +2,7 @@ import {CSSProperties} from 'react';
 import {Img, interpolate, staticFile, useCurrentFrame} from 'remotion';
 
 const BackDrop = () => {
-	// styles =============================================>
+	// Styles =============================================>
 	const styles: {[key: string]: CSSProperties} = {
 		mainContainer: {
 			width: '100%',
@@ -16,7 +16,7 @@ const BackDrop = () => {
 			translate: '-50% -50%',
 		},
 	};
-	//JS =============================================>
+	// JS =============================================>
 	const frame = useCurrentFrame();
 	const scale = interpolate(frame, [0, 599], [0.5, 1], {
 		extrapolateLeft: 'clamp',

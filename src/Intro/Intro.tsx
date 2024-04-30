@@ -1,11 +1,12 @@
 import {CSSProperties} from 'react';
-import { Sequence } from 'remotion';
+import {Sequence} from 'remotion';
 import BackDrop from './Components/BackDrop';
 import BackgroundCircle from './Components/BackgroundCircle';
 import ForeDrop from './Components/ForeDrop';
+import Typewriter from '../Shared/Effects/Typewriter';
 
 const Intro = () => {
-	// styles =============================================>
+	// Styles =============================================>
 	const styles: {[key: string]: CSSProperties} = {
 		introContainer: {
 			width: '100%',
@@ -29,27 +30,29 @@ const Intro = () => {
 			translate: '-50% -50%',
 			zIndex: 4,
 		},
-		backgroundCircle: {
+		title: {
 			position: 'absolute',
-			top: '50%',
-			left: '100%',
-			zIndex: 0,
-			// translate: '-50% -50%',
+			top: '80%',
+			left: '50%',
+			zIndex: 5,
+			translate: '-50% 0',
 		},
 	};
-	//JS =============================================>
+	// JS =============================================>
 	return (
 		<div style={styles.introContainer}>
 			<div style={styles.backDrop}>
 				<BackDrop />
 			</div>
-			<Sequence from={60} >
-			<div style={styles.foreDrop}>
-				<ForeDrop />
-			</div>
+			<Sequence from={60}>
+				<div style={styles.foreDrop}>
+					<ForeDrop />
+				</div>
 			</Sequence>
 			<BackgroundCircle />
-			{/* <div style={styles.backgroundCircle}></div> */}
+			<div style={styles.title}>
+				<Typewriter text="This is my title text" />
+			</div>
 		</div>
 	);
 };
