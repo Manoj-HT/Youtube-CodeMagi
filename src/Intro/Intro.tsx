@@ -1,5 +1,10 @@
 import {CSSProperties} from 'react';
-import {Sequence} from 'remotion';
+import {
+	Easing,
+	InterpolateOptions,
+	interpolate,
+	useCurrentFrame,
+} from 'remotion';
 import BackDrop from './Components/BackDrop';
 import BackgroundCircle from './Components/BackgroundCircle';
 import ForeDrop from './Components/ForeDrop';
@@ -39,19 +44,38 @@ const Intro = () => {
 		},
 	};
 	// JS =============================================>
+	const frame = useCurrentFrame();
+	const interPolateOptions: InterpolateOptions = {
+		extrapolateRight: 'clamp',
+		extrapolateLeft: 'clamp',
+	};
+	const opacity = interpolate(frame, [250, 310], [0, 1], interPolateOptions);
+	const getInterpolateForEnding = (valueFromTo: [number, number]) => {
+		return interpolate(frame, [540, 600], valueFromTo, interPolateOptions);
+	};
+	const foreDropScale = interpolate(frame, [500, 560], [1, 0], {
+		...interPolateOptions,
+		easing: Easing.inOut(Easing.ease),
+	});
 	return (
-		<div style={styles.introContainer}>
+		<div
+			style={{
+				...styles.introContainer,
+				opacity: `${getInterpolateForEnding([1, 0])}`,
+				filter: `blur(${getInterpolateForEnding([0, 5])}px)`,
+			}}
+		>
 			<div style={styles.backDrop}>
 				<BackDrop />
 			</div>
-			<Sequence from={60}>
-				<div style={styles.foreDrop}>
-					<ForeDrop />
-				</div>
-			</Sequence>
-			<BackgroundCircle />
-			<div style={styles.title}>
-				<Typewriter text="This is my title text" />
+			<div style={{...styles.foreDrop, scale: `${foreDropScale}`}}>
+				<ForeDrop />
+			</div>
+			<div style={{scale: `${foreDropScale}`}}>
+				<BackgroundCircle />
+			</div>
+			<div style={{...styles.title, opacity: `${opacity}`}}>
+				<Typewriter text="This is my title text" fromToFrame={[250, 370]} />
 			</div>
 		</div>
 	);

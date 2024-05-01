@@ -28,10 +28,10 @@ const ForeDrop = () => {
 		extrapolateRight: 'clamp',
 	};
 	const frame = useCurrentFrame();
-	const scale = interpolate(frame, [0, 30], [1, 0.25], interpolateOptions);
-	const circleOacity = interpolate(frame, [0, 30], [0, 1], interpolateOptions);
-	const width = interpolate(frame, [30, 60], [900, 6900], interpolateOptions);
-	const opacity = interpolate(frame, [90, 150], [0, 1], {
+	const scale = interpolate(frame, [60, 90], [1, 0.25], interpolateOptions);
+	const circleOacity = interpolate(frame, [60, 90], [0, 1], interpolateOptions);
+	const width = interpolate(frame, [90, 120], [900, 6900], interpolateOptions);
+	const opacity = interpolate(frame, [120, 180], [0, 1], {
 		extrapolateRight: 'clamp',
 	});
 	return (

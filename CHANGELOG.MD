@@ -1,3 +1,8 @@
+# 7
+
+1. typewriter effect added
+2. intro completed
+
 # 6
 
 1. typewriter.tsx added
