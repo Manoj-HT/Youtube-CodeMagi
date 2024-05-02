@@ -1,3 +1,9 @@
+# 9
+
+1. core added
+2. intro media arranged
+3. intro sequence added for core
+
 # 8
 
 1. intro music added

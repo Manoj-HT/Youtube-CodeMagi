@@ -64,7 +64,6 @@ const Intro = () => {
 			style={{
 				...styles.introContainer,
 				opacity: `${getInterpolateForEnding([1, 0])}`,
-				filter: `blur(${getInterpolateForEnding([0, 5])}px)`,
 			}}
 		>
 			<div style={styles.backDrop}>
