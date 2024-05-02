@@ -1,3 +1,7 @@
+# 8
+
+1. intro music added
+
 # 7
 
 1. typewriter effect added

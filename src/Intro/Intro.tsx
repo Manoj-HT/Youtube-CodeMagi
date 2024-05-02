@@ -1,9 +1,11 @@
-import {CSSProperties} from 'react';
+import { CSSProperties } from 'react';
 import {
 	Easing,
 	InterpolateOptions,
 	interpolate,
+	staticFile,
 	useCurrentFrame,
+	Audio,
 } from 'remotion';
 import BackDrop from './Components/BackDrop';
 import BackgroundCircle from './Components/BackgroundCircle';
@@ -12,7 +14,7 @@ import Typewriter from '../Shared/Effects/Typewriter';
 
 const Intro = () => {
 	// Styles =============================================>
-	const styles: {[key: string]: CSSProperties} = {
+	const styles: { [key: string]: CSSProperties } = {
 		introContainer: {
 			width: '100%',
 			position: 'relative',
@@ -68,15 +70,16 @@ const Intro = () => {
 			<div style={styles.backDrop}>
 				<BackDrop />
 			</div>
-			<div style={{...styles.foreDrop, scale: `${foreDropScale}`}}>
+			<div style={{ ...styles.foreDrop, scale: `${foreDropScale}` }}>
 				<ForeDrop />
 			</div>
-			<div style={{scale: `${foreDropScale}`}}>
+			<div style={{ scale: `${foreDropScale}` }}>
 				<BackgroundCircle />
 			</div>
-			<div style={{...styles.title, opacity: `${opacity}`}}>
+			<div style={{ ...styles.title, opacity: `${opacity}` }}>
 				<Typewriter text="This is my title text" fromToFrame={[250, 370]} />
 			</div>
+			<Audio src={staticFile("intro-music/music.mp3")} />
 		</div>
 	);
 };
