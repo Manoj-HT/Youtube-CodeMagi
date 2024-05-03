@@ -1,3 +1,7 @@
+# 9
+
+1. added end at attribute for audio file in intro
+
 # 8
 
 1. intro music added
