@@ -1,3 +1,7 @@
+# 12
+
+1. outro assets added
+
 # 11
 
 1. colors changed in intro
