@@ -1,3 +1,7 @@
+# 11
+
+1. colors changed in intro
+
 # 10
 
 1. outro layout added

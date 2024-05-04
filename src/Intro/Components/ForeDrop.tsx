@@ -10,7 +10,8 @@ const ForeDrop = () => {
 	const styles: {[key: string]: CSSProperties} = {
 		mainContainer: {
 			height: '900px',
-			backgroundColor: 'rebeccapurple',
+			background:
+				'linear-gradient(90deg, rgba(96,39,180,1) 0%, rgba(158,0,181,1) 100%)',
 			borderRadius: '900px',
 			fontSize: '450px',
 			fontFamily: 'Montserrat',
