@@ -1,4 +1,4 @@
-let time = 1.1;
+let time = 1;
 
 export const timingInFrames = () => {
 	let clipTime = time * 120;
