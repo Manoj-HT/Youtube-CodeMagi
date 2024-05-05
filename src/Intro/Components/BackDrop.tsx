@@ -24,10 +24,10 @@ const BackDrop = () => {
 	});
 	return (
 		<div style={styles.mainContainer}>
-			<Img src={staticFile('intro-bg/bg.png')} />
+			<Img src={staticFile('intro/bg.png')} />
 			<Img
 				style={{...styles.img, transform: `scale(${scale})`}}
-				src={staticFile('intro-bg/stars.png')}
+				src={staticFile('intro/stars.png')}
 			/>
 		</div>
 	);

@@ -78,7 +78,7 @@ const Intro = () => {
 			<div style={{ ...styles.title, opacity: `${opacity}` }}>
 				<Typewriter text="This is my title text" fromToFrame={[250, 370]} />
 			</div>
-			<Audio src={staticFile("intro-music/music.mp3")} endAt={600} />
+			<Audio src={staticFile("intro/music.mp3")} endAt={600} />
 		</div>
 	);
 };
