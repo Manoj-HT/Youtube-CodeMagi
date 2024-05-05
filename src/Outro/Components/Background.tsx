@@ -36,10 +36,15 @@ const Background = () => {
 			left: '85%',
 			zIndex: 2,
 		},
+		fire: {
+			position: 'absolute',
+			top: '27%',
+			left: '50%',
+			zIndex: 2,
+		},
 	};
 	// JS =============================================>
 	const frame = useCurrentFrame();
-	const { fps } = useVideoConfig();
 	type interPolateValue = [number, number];
 	const getInterPolate = (
 		fromToFrame: interPolateValue,
@@ -51,7 +56,7 @@ const Background = () => {
 		});
 	};
 	const bgOpacity = getInterPolate([0, 60], [0, 1]);
-	const rocketMoving = getInterPolate([60, 150], [0, 100]);
+	const rocketMoving = getInterPolate([60, 180], [0, 100]);
 	const planetOpacity = getInterPolate([180, 240], [0, 1]);
 	const floatOption = {
 		framesForOscillation: [240, 360, 480, 600],
@@ -64,6 +69,21 @@ const Background = () => {
 			planet ? floatOption.oscillationY : floatOption.oscillationY.reverse()
 		);
 	};
+	const fireOscillations = interpolate(
+		frame,
+		[
+			60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 135,
+			140, 145, 150, 155, 160, 165, 170, 175, 180,
+		],
+		[
+			-5, 5, -5, 5, -5, 5, -5, 5, -5, 5, -5, 5, -5, 5, -5, 5, -5, 5, -5, 5, -5,
+			5, -5, 5, -5,
+		],
+		{
+			extrapolateLeft: 'clamp',
+			extrapolateRight: 'clamp',
+		}
+	);
 	return (
 		<>
 			<div style={{ ...styles.container, opacity: `${bgOpacity}` }}>
@@ -73,6 +93,11 @@ const Background = () => {
 						translate: `0 calc( 2160px - ${rocketMoving}% )`,
 					}}
 				>
+					<div
+						style={{ ...styles.fire, translate: `-46% ${fireOscillations}%` }}
+					>
+						<Img src={staticFile('outro/fire.png')} />
+					</div>
 					<Img src={staticFile('outro/bg-rocket.png')} />
 				</div>
 				<div
