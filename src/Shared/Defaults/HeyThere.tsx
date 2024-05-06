@@ -5,6 +5,10 @@ import { useVideoConfig } from 'remotion';
 const HeyThere = () => {
 	// Styles =============================================>
 	const styles: { [name: string]: CSSProperties } = {
+		container: {
+			display: 'flex',
+			gap: '80px',
+		},
 		span: {
 			fontSize: '150px',
 			height: '180px',
@@ -24,26 +28,26 @@ const HeyThere = () => {
 	};
 	return (
 		<>
-			<span
-				style={{
-					...styles.span,
-					opacity: `${span.opacity([0, 10])}`,
-					scale: `${span.scale()}`,
-				}}
-			>
-				HEY
-			</span>
-			{'     '}
-			&nbsp; &nbsp; &nbsp; +&nbsp;
-			<span
-				style={{
-					...styles.span,
-					opacity: `${span.opacity([20, 30])}`,
-					scale: `${span.scale(10)}`,
-				}}
-			>
-				THERE!
-			</span>
+			<div style={styles.container}>
+				<div
+					style={{
+						...styles.span,
+						opacity: `${span.opacity([0, 10])}`,
+						scale: `${span.scale()}`,
+					}}
+				>
+					HEY
+				</div>
+				<div
+					style={{
+						...styles.span,
+						opacity: `${span.opacity([20, 30])}`,
+						scale: `${span.scale(10)}`,
+					}}
+				>
+					THERE!
+				</div>
+			</div>
 		</>
 	);
 };

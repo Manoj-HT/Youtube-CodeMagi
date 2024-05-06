@@ -2,7 +2,7 @@ import { Composition } from 'remotion';
 import './index.css';
 import Core from './Core/Core';
 import { timingInFrames } from './Core/clipTimings';
-import HeyThere from './Shared/Defaults/HeyThere';
+import C2P2 from './C2P2/C2P2';
 export const RemotionRoot: React.FC = () => {
 	return (
 		<>
@@ -15,9 +15,9 @@ export const RemotionRoot: React.FC = () => {
 				height={2160}
 			/>
 			<Composition
-				id="heythere"
-				component={HeyThere}
-				durationInFrames={600}
+				id="c2p2"
+				component={C2P2}
+				durationInFrames={timingInFrames().clipTime}
 				fps={120}
 				width={3840}
 				height={2160}
