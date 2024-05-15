@@ -1,10 +1,10 @@
 import { CSSProperties } from 'react';
-const widthHeight: CSSProperties = {
+export const widthHeight: CSSProperties = {
 	width: 'max-content',
 	height: 'max-content',
 };
 const border = '5px solid red';
-const positionCenter: CSSProperties = {
+export const positionCenter: CSSProperties = {
 	top: '50%',
 	left: '50%',
 	translate: '-50% -50%',

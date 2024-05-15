@@ -8,13 +8,13 @@ const Core = () => {
 	let outroFrameTime = durationInFrames - 600;
 	return (
 		<>
-			<Sequence from={0}>
+			<Sequence from={0} name='Intro'>
 				<Intro />
 			</Sequence>
-			<Sequence from={600}>
+			<Sequence from={600} name='Clip' >
 				<C2P2 />
 			</Sequence>
-			<Sequence from={outroFrameTime}>
+			<Sequence from={outroFrameTime} name='Outro'>
 				<Outro />
 			</Sequence>
 		</>

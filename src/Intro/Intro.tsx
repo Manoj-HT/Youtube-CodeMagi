@@ -76,9 +76,12 @@ const Intro = () => {
 				<BackgroundCircle />
 			</div>
 			<div style={{ ...styles.title, opacity: `${opacity}` }}>
-				<Typewriter text="JAVA | Finding the largest of two numbers" fromToFrame={[250, 370]} />
+				<Typewriter
+					text="JAVA | Finding the largest of two numbers"
+					fromToFrame={[250, 370]}
+				/>
 			</div>
-			<Audio src={staticFile("intro/music.mp3")} endAt={600} />
+			<Audio src={staticFile('intro/music.mp3')} endAt={600} />
 		</div>
 	);
 };

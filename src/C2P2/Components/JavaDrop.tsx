@@ -33,13 +33,13 @@ const JavaDrop = () => {
 	const javaLogo = {
 		opacity: interpolate(
 			frame,
-			[0, 200, durationInFrames],
+			[0, 180, durationInFrames],
 			[0, 0, 1],
-			interpolateOptions
+			interpolateOptions,
 		),
 		drop: spring({ frame, fps, from: -80, to: 0, delay: 200 }),
 	};
-  console.log(javaLogo.drop)
+	console.log(javaLogo.drop);
 	return (
 		<>
 			<div

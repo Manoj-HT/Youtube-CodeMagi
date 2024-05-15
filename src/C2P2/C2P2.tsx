@@ -1,9 +1,15 @@
 import { CSSProperties } from 'react';
 import AudioSequences from './Components/AudioSequences';
 import HeyThere from '../Shared/Defaults/HeyThere';
-import { Folder, Sequence } from 'remotion';
-import JavaDrop from './Components/JavaDrop';
+import {
+	interpolate,
+	InterpolateOptions,
+	Sequence,
+	useCurrentFrame,
+} from 'remotion';
 import { heyThere, javaDrop } from './Components/styles';
+import JavaDrop from './Components/JavaDrop';
+import SeeSaw from './Components/SeeSaw';
 
 const C2P2 = () => {
 	const styles: { [name: string]: CSSProperties } = {
@@ -17,30 +23,60 @@ const C2P2 = () => {
 			alignItems: 'center',
 		},
 	};
+	const configs = {
+		frame: useCurrentFrame(),
+	};
+	const interpolateOptions = {
+		hereAndThere: {
+			extrapolateLeft: 'clamp',
+			extrapolateRight: 'clamp',
+		} as InterpolateOptions,
+	};
+	const interpolations = {
+		backgroundOpacity: interpolate(
+			configs.frame,
+			[0, 120],
+			[0, 1],
+			interpolateOptions.hereAndThere,
+		),
+		heyThereFadeOut: interpolate(
+			configs.frame,
+			[200, 300],
+			[1, 0],
+			interpolateOptions.hereAndThere,
+		),
+	};
 	return (
 		<>
-			<div style={styles.background}>
+			<div
+				style={{
+					...styles.background,
+					opacity: `${interpolations.backgroundOpacity}`,
+				}}
+			>
+				<Sequence from={120} name="audio">
+					<AudioSequences />
+				</Sequence>
 				<Sequence
-					from={0}
-					name="Hey there"
-					durationInFrames={120}
-					style={heyThere}
+					from={120}
+					durationInFrames={180}
+					name="Hey There"
+					style={{ ...heyThere, opacity: `${interpolations.heyThereFadeOut}` }}
 				>
 					<HeyThere />
 				</Sequence>
 				<Sequence
-					from={120}
-					name="Java Drop"
-					style={javaDrop}
-					durationInFrames={450 - 120}
+					from={300}
+					durationInFrames={300}
+					name="Java World"
+					style={{ ...javaDrop }}
 				>
 					<JavaDrop />
 				</Sequence>
-				<Sequence name="See-Saw" from={450} durationInFrames={900 - 450}>
-					<div></div>
+				<Sequence from={600}>
+					<SeeSaw />
 				</Sequence>
 			</div>
-			<AudioSequences />
 		</>
 	);
 };
