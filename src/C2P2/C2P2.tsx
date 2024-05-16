@@ -73,7 +73,7 @@ const C2P2 = () => {
 				>
 					<JavaDrop />
 				</Sequence>
-				<Sequence from={600}>
+				<Sequence from={600} durationInFrames={415} name='Larger of two num' >
 					<SeeSaw />
 				</Sequence>
 			</div>

@@ -5,6 +5,7 @@ import {
 	interpolate,
 	useCurrentFrame,
 } from 'remotion';
+import XY from './XY';
 
 const SeeSaw = () => {
 	const styles: { [name: string]: CSSProperties } = {
@@ -17,7 +18,6 @@ const SeeSaw = () => {
 			top: '50%',
 			left: '50%',
 			translate: '-50% 0',
-			// rotate: '-10deg',
 		},
 		triangle: {
 			width: 0,
@@ -29,6 +29,17 @@ const SeeSaw = () => {
 			top: '52%',
 			left: '50%',
 			translate: '-50% 0',
+		},
+		blockDefaults: {},
+		xBlock: {
+			height: 'max-content',
+			width: 'max-content',
+			left: '25%',
+		},
+		yBlock: {
+			height: 'max-content',
+			width: 'max-content',
+			left: '64%',
 		},
 	};
 	const config = {
@@ -43,15 +54,54 @@ const SeeSaw = () => {
 	const interpolations = {
 		barRotate: interpolate(
 			config.frame,
-			[200,230],
-			[0,10],
+			[200, 230],
+			[0, 10],
+			interpolationOptions.hereAndThere,
+		),
+		xFall: interpolate(
+			config.frame,
+			[215, 245],
+			[31, 37],
+			interpolationOptions.hereAndThere,
+		),
+		blockRotate: (frame: [number, number]) => interpolate(
+			config.frame,
+			frame,
+			[0, 10],
+			interpolationOptions.hereAndThere,
+		),
+		yRaise: interpolate(
+			config.frame,
+			[200, 230],
+			[31, 24.5],
 			interpolationOptions.hereAndThere,
 		),
 	};
+	// 31 24.5
 	return (
 		<>
 			<AbsoluteFill>
-				<AbsoluteFill style={{...styles.bar, rotate : `-${interpolations.barRotate}deg`}}></AbsoluteFill>
+				<AbsoluteFill
+					style={{
+						...styles.xBlock,
+						top: `${interpolations.xFall}%`,
+						rotate: `-${interpolations.blockRotate([245, 255])}deg`,
+					}}
+				>
+					<XY color="red" letter="22" />
+				</AbsoluteFill>
+				<AbsoluteFill
+					style={{
+						...styles.yBlock,
+						top: `${interpolations.yRaise}%`,
+						rotate: `-${interpolations.blockRotate([200, 230])}deg`,
+					}}
+				>
+					<XY color="black" letter="8" />
+				</AbsoluteFill>
+				<AbsoluteFill
+					style={{ ...styles.bar, rotate: `-${interpolations.barRotate}deg` }}
+				></AbsoluteFill>
 				<AbsoluteFill style={styles.triangle}></AbsoluteFill>
 			</AbsoluteFill>
 		</>
