@@ -10,6 +10,7 @@ import {
 import { heyThere, javaDrop } from './Components/styles';
 import JavaDrop from './Components/JavaDrop';
 import SeeSaw from './Components/SeeSaw';
+import LastVideo from './Components/LastVideo';
 
 const C2P2 = () => {
 	const styles: { [name: string]: CSSProperties } = {
@@ -54,16 +55,11 @@ const C2P2 = () => {
 					opacity: `${interpolations.backgroundOpacity}`,
 				}}
 			>
-				<Sequence from={120} name="audio">
-					<AudioSequences />
+				<Sequence from={1100} durationInFrames={1470}>
+					<LastVideo /> 
 				</Sequence>
-				<Sequence
-					from={120}
-					durationInFrames={180}
-					name="Hey There"
-					style={{ ...heyThere, opacity: `${interpolations.heyThereFadeOut}` }}
-				>
-					<HeyThere />
+				<Sequence from={600} durationInFrames={500} name="Larger of two num">
+					<SeeSaw />
 				</Sequence>
 				<Sequence
 					from={300}
@@ -73,8 +69,16 @@ const C2P2 = () => {
 				>
 					<JavaDrop />
 				</Sequence>
-				<Sequence from={600} durationInFrames={415} name='Larger of two num' >
-					<SeeSaw />
+				<Sequence
+					from={120}
+					durationInFrames={180}
+					name="Hey There"
+					style={{ ...heyThere, opacity: `${interpolations.heyThereFadeOut}` }}
+				>
+					<HeyThere />
+				</Sequence>
+				<Sequence from={120} name="audio">
+					<AudioSequences />
 				</Sequence>
 			</div>
 		</>

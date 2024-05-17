@@ -4,6 +4,7 @@ import {
 	InterpolateOptions,
 	interpolate,
 	useCurrentFrame,
+	useVideoConfig,
 } from 'remotion';
 import XY from './XY';
 
@@ -44,6 +45,7 @@ const SeeSaw = () => {
 	};
 	const config = {
 		frame: useCurrentFrame(),
+		video : useVideoConfig()
 	};
 	const interpolationOptions = {
 		hereAndThere: {
@@ -76,11 +78,12 @@ const SeeSaw = () => {
 			[31, 24.5],
 			interpolationOptions.hereAndThere,
 		),
+		fadeOut : interpolate(config.frame, [config.video.durationInFrames-60, config.video.durationInFrames], [1, 0], interpolationOptions.hereAndThere)
 	};
 	// 31 24.5
 	return (
 		<>
-			<AbsoluteFill>
+			<AbsoluteFill style={{opacity : `${interpolations.fadeOut}`}} >
 				<AbsoluteFill
 					style={{
 						...styles.xBlock,
