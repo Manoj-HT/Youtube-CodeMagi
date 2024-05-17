@@ -56,7 +56,7 @@ const C2P2 = () => {
 				}}
 			>
 				<Sequence from={1100} durationInFrames={1470}>
-					<LastVideo /> 
+					<LastVideo />
 				</Sequence>
 				<Sequence from={600} durationInFrames={500} name="Larger of two num">
 					<SeeSaw />
